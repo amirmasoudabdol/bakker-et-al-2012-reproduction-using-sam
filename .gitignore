@@ -1,3 +1,15 @@
+# --------------
+# Project
+*.png
+*.tiff
+/**/build
+/**/SAMrun
+/**/configs
+/**/outputs
+
+
+# --------------
+# R 
 # History files
 .Rhistory
 .Rapp.history

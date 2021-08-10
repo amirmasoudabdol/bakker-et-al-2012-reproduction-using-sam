@@ -1,0 +1,30 @@
+{
+  "baseUrl": "/doxygen/",
+  "copyImages": true,
+  "fileExt": "md",
+  "filesFilter": [],
+  "folderClassesName": "Classes",
+  "folderExamplesName": "Examples",
+  "folderFilesName": "Files",
+  "folderGroupsName": "Modules",
+  "folderNamespacesName": "Namespaces",
+  "folderRelatedPagesName": "Pages",
+  "foldersToGenerate": [
+    "classes",
+    "namespaces",
+    "modules"
+  ],
+  "imagesFolder": "images",
+  "indexClassesName": "index",
+  "indexExamplesName": "index",
+  "indexFilesName": "index",
+  "indexGroupsName": "index",
+  "indexInFolders": true,
+  "indexNamespacesName": "index",
+  "indexRelatedPagesName": "index",
+  "linkAndInlineCodeAsHTML": false,
+  "linkLowercase": false,
+  "linkSuffix": "/",
+  "mainPageInRoot": true,
+  "mainPageName": "index"
+}

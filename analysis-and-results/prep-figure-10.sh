@@ -1,0 +1,1 @@
+convert Figures/Figure-10-Bias-vs-Alpha.png -trim Figures/Figure-10-Bias-vs-Alpha.png

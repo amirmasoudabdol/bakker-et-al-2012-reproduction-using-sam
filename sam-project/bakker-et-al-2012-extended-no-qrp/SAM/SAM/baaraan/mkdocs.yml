@@ -1,0 +1,85 @@
+site_name: BAARAAN
+
+nav:
+  - Home: index.md
+  - Classes: doxygen/Classes
+  - Modules: doxygen/Modules
+
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: light blue
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: light blue
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+  font: false
+  include_homepage_in_sidebar: false
+  highlightjs: true
+  features:
+    - tab
+    - instant
+    - header.hide
+  logo: img/baaraan-logo-rect.png
+  favicon: img/baaraan-logo.ico
+  icon:
+    repo: fontawesome/brands/github
+
+repo_name: GitHub
+repo_url: https://github.com/amirmasoudabdol/baaraan
+edit_uri: edit/main/docs
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/amirmasoudabdol
+
+extra_css: 
+  - custom.css
+
+copyright: Copyright &copy; 2021 Amir Masoud Abdol
+
+custom_dir: overrides
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.highlight:
+      linenums_style: pymdownx.inline
+  - pymdownx.magiclink
+  - pymdownx.mark
+  #- pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
+  - pymdownx.snippets:
+      base_path: .
+      check_paths: true
+  - plantuml_markdown:
+      format: svg
+  - footnotes
+  - toc:
+      permalink: true

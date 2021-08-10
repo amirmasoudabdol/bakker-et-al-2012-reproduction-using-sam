@@ -1,0 +1,28 @@
+name: macOS
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+      - name: Cloning the Repository
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PRIVATE_ACCESS }}
+
+      - name: Installing Dependencies
+        run: |
+          brew install boost 
+          brew install armadillo
+
+      - name: Configure
+        run: cmake -DENABLE_TESTS=ON -S . -B build/
+
+      - name: Build
+        run: cmake --build build/ --parallel 10
+
+      - name: Test
+        run: cmake --build build/ --target test

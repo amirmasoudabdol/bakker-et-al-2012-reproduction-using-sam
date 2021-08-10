@@ -1,0 +1,171 @@
+{
+    "experiment_parameters": {
+        "data_strategy": {
+            "name": "LinearModel",
+            "measurements": {
+                "dist": "mvnorm_distribution",
+                "means": [
+                    0.0,
+                    0.0,
+                    0.15,
+                    0.15
+                ],
+                "sigma": [
+                    [
+                        1.0,
+                        0.5,
+                        0.0,
+                        0.0
+                    ],
+                    [
+                        0.5,
+                        1.0,
+                        0.0,
+                        0.0
+                    ],
+                    [
+                        0.0,
+                        0.0,
+                        1.0,
+                        0.5
+                    ],
+                    [
+                        0.0,
+                        0.0,
+                        0.5,
+                        1.0
+                    ]
+                ]
+            }
+        },
+        "effect_strategy": {
+            "name": "StandardizedMeanDifference"
+        },
+        "n_conditions": 2,
+        "n_dep_vars": 2,
+        "n_obs": 10,
+        "n_reps": 5,
+        "test_strategy": {
+            "name": "TTest",
+            "alpha": 0.05,
+            "alternative": "TwoSided",
+            "var_equal": true
+        }
+    },
+    "journal_parameters": {
+        "max_pubs": 10,
+        "review_strategy": {
+            "name": "FreeSelection"
+        }
+    },
+    "researcher_parameters": {
+        "research_strategy": {
+            "name": "DefaultResearchStrategy",
+            "initial_selection_policies": [
+                [
+                    "id == 2",
+                    "sig",
+                    "effect > 0"
+                ],
+                [
+                    "id == 3",
+                    "sig",
+                    "effect > 0"
+                ]
+            ],
+            "between_stashed_selection_policies": [
+                [
+                    "effect > 0",
+                    "min(pvalue)"
+                ],
+                [
+                    "effect < 0",
+                    "max(pvalue)"
+                ]
+            ],
+            "between_replications_selection_policies": [
+                [
+                    "effect > 0",
+                    "sig",
+                    "first"
+                ],
+                [
+                    "effect > 0",
+                    "min(pvalue)"
+                ],
+                [
+                    "effect < 0",
+                    "max(pvalue)"
+                ]
+            ],
+            "stashing_policy": [
+                "all"
+            ],
+            "will_start_hacking_decision_policies": [
+                "effect < 0",
+                "!sig"
+            ]
+        },
+        "probability_of_being_a_hacker": 1,
+        "probability_of_committing_a_hack": 1,
+        "hacking_strategies": [
+            [
+                [
+                    {
+                        "name": "OptionalStopping",
+                        "n_attempts": 1,
+                        "target": "Both",
+                        "num": 10
+                    },
+                    [
+                        [
+                            "effect > 0",
+                            "min(pvalue)"
+                        ]
+                    ],
+                    [
+                        "effect < 0",
+                        "!sig"
+                    ]
+                ],
+                [
+                    {
+                        "name": "OutliersRemoval",
+                        "min_observations": 1,
+                        "multipliers": [
+                            2
+                        ],
+                        "n_attempts": 1,
+                        "target": "Both",
+                        "num": 10,
+                        "order": "random"
+                    },
+                    [
+                        [
+                            "effect > 0",
+                            "min(pvalue)"
+                        ]
+                    ],
+                    [
+                        "effect < 0",
+                        "!sig"
+                    ]
+                ]
+            ]
+        ]
+    },
+    "simulation_parameters": {
+        "log_level": "trace",
+        "master_seed": "random",
+        "n_sims": 1,
+        "output_path": "../outputs/",
+        "output_prefix": "03c47138-498b-472d-80e0-b4737aa5772e",
+        "update_config": true,
+        "progress": false,
+        "save_all_pubs": true,
+        "save_meta": false,
+        "save_overall_summaries": true,
+        "save_pubs_per_sim_summaries": false,
+        "save_rejected": false
+    }
+}

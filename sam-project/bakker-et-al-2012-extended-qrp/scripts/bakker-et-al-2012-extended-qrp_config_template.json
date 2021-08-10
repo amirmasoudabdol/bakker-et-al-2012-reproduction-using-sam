@@ -1,0 +1,66 @@
+{
+    "experiment_parameters": {
+        "data_strategy": {
+            "name": "LinearModel",
+            "covs": 0.0,
+            "means": [
+                0,
+                0.2
+            ],
+            "vars": 0.1
+        },
+        "effect_strategy": {
+            "name": "CohensD"
+        },
+        "n_conditions": 2,
+        "n_dep_vars": 1,
+        "n_obs": 100,
+        "test_strategy": {
+            "name": "TTest",
+            "alpha": 0.05,
+            "side": "TwoSided"
+        }
+    },
+    "journal_parameters": {
+        "max_pubs": 20,
+        "review_strategy": {
+            "name": "FreeSelection",
+            "alpha": 0.05,
+            "pub_bias": 0.95,
+            "side": 0
+        }
+    },
+    "researcher_parameters": {
+        "research_strategy": {
+            "name": "DefaultResearchStrategy",
+            "preference": "MinPvalue"
+        },
+        "hacking_strategies": [
+            [
+                {
+                    "name": "SDOutlierRemoval",
+                    "level": "dv",
+                    "max_attempts": 10,
+                    "min_observations": 20,
+                    "mode": "Recursive",
+                    "multipliers": [
+                        1
+                    ],
+                    "n_attempts": 4,
+                    "num": 2,
+                    "order": "max first"
+                }
+            ]
+        ],
+        "is_phacker": true
+    },
+    "simulation_parameters": {
+        "log_level": false,
+        "master_seed": 42,
+        "n_sims": 5,
+        "output_path": "../outputs/",
+        "output_prefix": "",
+        "progress": false,
+        "verbose": true
+    }
+}
