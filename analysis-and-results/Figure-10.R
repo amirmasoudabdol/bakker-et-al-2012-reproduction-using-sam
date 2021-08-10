@@ -45,7 +45,7 @@ Publications_Summaries <- merge(QRP_Publications_Summaries, NO_QRP_Publications_
 Publications_Summaries <- merge(Publications_Summaries, AGG_QRP_Publications_Summaries, all = T)
 Publications_Summaries$sizeclass <- factor(Publications_Summaries$sizeclass, levels = c("S", "M", "L"), labels = c("S; N = 10", "M; N = 20", "L; N = 40"))
 Publications_Summaries$size <- factor(Publications_Summaries$size, levels = c("Small", "Large"))
-
+Publications_Summaries$expr_name <- factor(Publications_Summaries$expr_name, levels = c("No QRP", "Bakker's", "Aggressive"))
 
 # -------------------------------------
 # Figure 9 - Aggressive QRPs vs Alpha
@@ -62,14 +62,17 @@ Publications_Summaries %>%
   scale_linetype_manual(values=c("dashed", "solid")) +
   scale_x_continuous(n.breaks = 3) +
   scale_y_continuous(n.breaks = 3) +
-  coord_fixed(xlim=c(0., 1.), ylim = c(0., 1.5)) +
-  labs(title = "Influence of More Aggressive QRPs", 
-       y = "Bias", x = "True Effect Size", color = "QRP Procedure", linetype = 'Size') +
+  coord_fixed(xlim=c(0., 1.), ylim = c(0., 1.5), ratio = 0.75) +
+  labs(title = "Effect Size Bias", 
+       subtitle = "Under the influence of more aggressive set of QRPs.",
+       y = "Bias", x = "True Effect Size",
+       linetype = 'Study Size',
+       color = "QRP") +
   facet_grid(sizeclass ~ experiment_parameters_test_strategy_alpha, labeller = labeller(experiment_parameters_test_strategy_alpha = alpha_labels)) +
   theme_sf_light(font_family = "Nitti Grotesk") + 
   scale_colour_ios_light(accessible = T) +
   theme(plot.background = element_rect(fill = "white")) +
-  theme(plot.title = element_text(size = 16)) +
+  theme(plot.title = element_text(size = 16), plot.subtitle = element_text(size = 12, margin = margin(-5, 0, 10, 0))) + 
   theme(legend.position = "bottom", 
         legend.box = "horizontal",
         legend.direction = "vertical",

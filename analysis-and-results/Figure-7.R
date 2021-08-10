@@ -31,8 +31,6 @@ dataset$size <- factor(dataset$size, levels = c("Small", "Large"))
 # as well; however, here, we are only producing the figure 7.
 
 
-
-
 # COMPARE TO THE FIXED ONE
 
 bakker_fixed_ef <- read.csv("../r-project/bug-fixed-code-and-results/Figure 2/fixed_effect_size_bias_dataset.csv", stringsAsFactors = T)
@@ -63,19 +61,20 @@ ef_bias_plot <- combined_df %>%
   geom_line(show.legend = TRUE) +
   geom_point(size = 1.25, alpha = .75) +
   scale_linetype_manual(values=c("dashed", "solid")) +
-  scale_shape_manual(values=c(19, 29)) +
+  scale_shape_manual(values=c(29, 19)) +
   scale_x_continuous(n.breaks = 3) +
+  scale_y_continuous(n.breaks = 3) +
   facet_grid(sizeclass ~ .) +
   coord_fixed(xlim=c(0., 1.), ylim = c(0., 1.)) +
   labs(x = "True Effect Size", y = "Bias", title="Effect Size Bias",
        subtitle = TeX("$\\alpha = 0.05$"),
-       color = "w/ QRP",
+       color = "QRP",
        shape = "Source",
        linetype="Study Size") +
   theme_sf_light(font_family = "Nitti Grotesk") +
   scale_colour_ios_light(accessible = T) +
   theme(plot.background = element_rect(fill = "white")) +
-  theme(plot.title = element_text(size = 16)) +
+  theme(plot.title = element_text(size = 16), plot.subtitle = element_text(size = 12, margin = margin(-5, 0, 5, 0))) + 
   theme(legend.position = "bottom", 
         legend.box = "horizontal",
         legend.direction = "vertical",
@@ -85,7 +84,7 @@ ef_bias_plot <- combined_df %>%
 ef_bias_plot
 
 ggsave("Figures/Figure-7-Right-Panel.png", dpi = 600, bg = "transparent")
-ggsave("Figures/Figure-7-Right-Panel.tiff", dpi = 600, bg = "transparent")
+# ggsave("Figures/Figure-7-Right-Panel.tiff", dpi = 600, bg = "transparent")
 
 # -------------------------------------------------------
 
@@ -117,19 +116,20 @@ pfs_bias_plot <- combined_df %>%
   geom_line(show.legend = F) +
   scale_linetype_manual(values=c("dashed", "solid")) +
   geom_point(size = 1.25, alpha = .75) +
-  scale_shape_manual(values=c(19, 29)) +
+  scale_shape_manual(values=c(29, 19)) +
   facet_grid(sizeclass ~ .) +
   coord_fixed(xlim=c(0., 1.), ylim = c(0., 1.)) +
   scale_x_continuous(n.breaks = 3) +
+    scale_y_continuous(n.breaks = 3) +
   labs(x = "True Effect Size", y = "Proportion", title="Chance of Finding Sig.",
        subtitle = TeX("$\\alpha = 0.05$"),
-       color = "w/ QRP",
+       color = "QRP",
        shape = "Source",
        linetype="Study Size") +
   theme_sf_light(font_family = "Nitti Grotesk") +
   scale_colour_ios_light(accessible = T) +
   theme(plot.background = element_rect(fill = "white")) +
-  theme(plot.title = element_text(size = 16)) +
+  theme(plot.title = element_text(size = 16), plot.subtitle = element_text(size = 12, margin = margin(-5, 0, 10, 0))) + 
   theme(legend.position = "bottom", 
         legend.box = "horizontal",
         legend.direction = "vertical",
@@ -140,12 +140,12 @@ pfs_bias_plot <- combined_df %>%
 pfs_bias_plot
 
 ggsave("Figures/Figure-7-Left-Panel.png", bg = "transparent", dpi = 600)  
-ggsave("Figures/Figure-7-Left-Panel.tiff", bg = "transparent", dpi = 600)
+# ggsave("Figures/Figure-7-Left-Panel.tiff", bg = "transparent", dpi = 600)
 
 pfs_bias_plot + ef_bias_plot + plot_layout(guides = 'collect')
 
 ggsave("Figures/Figure-7.png", bg = "transparent", dpi = 600)
-ggsave("Figures/Figure-7.tiff", bg = "transparent", dpi = 600)
+# ggsave("Figures/Figure-7.tiff", bg = "transparent", dpi = 600)
 
 
 # Comparison with the Original Results
@@ -181,13 +181,14 @@ ef_bias_plot <- combined_df %>%
   geom_line(show.legend = TRUE) +
   geom_point(size = 1.25, alpha = .75) +
   scale_linetype_manual(values=c("dashed", "solid")) +
-  scale_shape_manual(values=c(19, 29)) +
+  scale_shape_manual(values=c(29, 19)) +
   scale_x_continuous(n.breaks = 3) +
+    scale_y_continuous(n.breaks = 3) +
   facet_grid(sizeclass ~ .) +
   coord_fixed(xlim=c(0., 1.), ylim = c(0., 1.)) +
   labs(x = "True Effect Size", y = "Bias", title="Effect Size Bias",
        subtitle = TeX("$\\alpha = 0.05$"),
-       color = "w/ QRP",
+       color = "QRP",
        shape = "Source",
        linetype="Study Size") +
   theme_sf_light(font_family = "Nitti Grotesk") +
@@ -235,13 +236,14 @@ pfs_bias_plot <- combined_df %>%
   geom_line(show.legend = F) +
   scale_linetype_manual(values=c("dashed", "solid")) +
   geom_point(size = 1.25, alpha = .75) +
-  scale_shape_manual(values=c(19, 29)) +
+  scale_shape_manual(values=c(29, 19)) +
   facet_grid(sizeclass ~ .) +
   coord_fixed(xlim=c(0., 1.), ylim = c(0., 1.)) +
   scale_x_continuous(n.breaks = 3) +
+    scale_y_continuous(n.breaks = 3) +
   labs(x = "True Effect Size", y = "Proportion", title="Chance of Finding Sig.",
        subtitle = TeX("$\\alpha = 0.05$"),
-       color = "w/ QRP",
+       color = "QRP",
        shape = "Source",
        linetype="Study Size") +
   theme_sf_light(font_family = "Nitti Grotesk") +
