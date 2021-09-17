@@ -85,12 +85,14 @@ ggsave("Figures/Figure-9-Alpha-vs-Size.tiff", dpi = 600, bg = "transparent")
 #   theme(plot.title = element_text(size = 16), plot.subtitle = element_text(size = 12)) 
 
 dataset %>%
+  filter(alpha == 0.05) %>%
   ggplot(., aes(x = tmean, y = mean_eff_diff,
                 color = is_hacked,
-                linetype = size,
-                shape = as.factor(alpha))) +
+                linetype = size#,
+                # shape = as.factor(alpha)
+        )) +
   geom_line(show.legend = TRUE, lwd = 0.75) +
-  geom_point(size = 1.75, alpha = 0.9) +
+  # geom_point(size = 1.75, alpha = 0.9) +
   scale_linetype_manual(values = c("dashed", "solid")) +
   facet_grid(sizeclass ~ n_reps, labeller = labeller(alpha = alpha_labels)) +
   coord_fixed(xlim = c(0., 1.), ylim = c(0., 1.1)) +
@@ -99,7 +101,7 @@ dataset %>%
   # scale_shape_manual(values = c(0, 1, 2)) +
   labs(x = "True Effect Size", y = "Bias",
        title = "Effect Size Bias",
-       subtitle = TeX("Under different number of replications."),
+       subtitle = TeX("Under different number of replications., $\\alpha$ = 0.05"),
        color = "QRP",
        shape = "Alpha",
        linetype = "Study Size") +

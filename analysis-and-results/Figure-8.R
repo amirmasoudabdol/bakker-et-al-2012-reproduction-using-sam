@@ -10,6 +10,7 @@ library(data.table)
 library(latex2exp)
 library(hrbrthemes)
 library(patchwork)
+library(sfthemes)
 
 # Reading the Summarized Output
 dataset <- fread("../sam-project/sam-results/bakker-et-al-2012_Summarized.csv")
@@ -58,3 +59,32 @@ ggsave("Figures/Figure-8.png", dpi = 600, bg = "transparent")
 # ggsave("Figures/Figure-8.tiff", dpi = 600, bg = "transparent")
 
 
+
+dataset %>%
+  ggplot(., aes(x = tmean, y = sigmean,
+                color = is_hacked,
+                linetype = size)) +
+  geom_line(show.legend = TRUE) +
+  scale_linetype_manual(values = c("dashed", "solid")) +
+  facet_grid(sizeclass ~ alpha) +
+  coord_fixed(xlim = c(0., 1.), ylim = c(0., 1.05)) +
+  scale_x_continuous(n.breaks = 3) +
+  scale_y_continuous(n.breaks = 3) +
+  labs(x = "True Effect Size", y = "Proportion",
+       title = "Chance of Finding Significant",
+       subtitle = TeX("Under different $\\alpha$ levels."),
+       color = "QRP",
+       linetype = "Study Size") +
+  theme(axis.text.x = element_text(angle = 45, margin = margin(10))) +
+  theme_sf_light(font_family = "Nitti Grotesk") +
+  scale_colour_ios_light(accessible = T) +
+  theme(plot.background = element_rect(fill = "white")) +
+  theme(plot.title = element_text(size = 16), plot.subtitle = element_text(size = 12, margin = margin(-5, 0, 10, 0))) + 
+  theme(legend.position = "bottom", 
+        legend.box = "horizontal",
+        legend.direction = "vertical",
+        legend.spacing = unit(0.0, "pt"),
+        legend.box.just = "left",
+        legend.justification = c(1, 0))
+
+ggsave("Figures/Figure-8-MeanSig.png", dpi = 600, bg = "transparent")
