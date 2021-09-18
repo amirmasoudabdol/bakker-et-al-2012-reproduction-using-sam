@@ -55,7 +55,7 @@ dataset %>%
         legend.box.just = "left",
         legend.justification = c(1, 0))
 
-ggsave("Figures/Figure-8.png", dpi = 600, bg = "transparent")
+ggsave("Figures/Figure-8-Effect.png", dpi = 600, bg = "transparent")
 # ggsave("Figures/Figure-8.tiff", dpi = 600, bg = "transparent")
 
 
